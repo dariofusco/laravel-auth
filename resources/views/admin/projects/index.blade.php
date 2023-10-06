@@ -29,7 +29,7 @@
                         <td>{{ $project->name }}</td>
                         <td>{{ $project->type }}</td>
                         <td>{{ $project->description }}</td>
-                        <td>{{ $project->date }}</td>
+                        <td>{{ $project->date->format('d/m/Y') }}</td>
                         <td>{{ $project->image }}</td>
                         <td>{{ $project->github_link }}</td>
                         <td>
