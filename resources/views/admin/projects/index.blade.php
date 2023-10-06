@@ -25,6 +25,7 @@
             <tbody>
                 @foreach ($projects as $project)
                     <tr>
+                        <td>{{ $project->id }}</td>
                         <td>{{ $project->name }}</td>
                         <td>{{ $project->type }}</td>
                         <td>{{ $project->description }}</td>
@@ -39,6 +40,8 @@
             </tbody>
 
         </table>
+
+        <a href="{{ url('/admin/dashboard') }}">Indietro</a>
 
     </div>
 @endsection

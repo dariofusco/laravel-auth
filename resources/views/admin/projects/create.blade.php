@@ -42,5 +42,7 @@
 
         </form>
 
+        <a href="{{ route('admin.projects.index') }}">Indietro</a>
+
     </div>
 @endsection

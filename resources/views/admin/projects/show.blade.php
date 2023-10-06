@@ -15,5 +15,7 @@
 
         <a href="{{ $project->github_link }}">GitHub Link</a>
 
+        <a href="{{ route('admin.projects.index') }}">Indietro</a>
+
     </div>
 @endsection
