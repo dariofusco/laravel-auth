@@ -34,7 +34,9 @@ class ProjectController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'type' => 'required',
+            'description' => 'required',
             'date' => 'required',
+            'image' => 'required',
             'github_link' => 'required'
         ]);
 

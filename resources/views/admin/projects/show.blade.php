@@ -9,9 +9,9 @@
 
         <p>{{ $project->description }}</p>
 
-        <p>{{ $project->date?->format('d/m/Y') }}</p>
+        <p>{{ $project->date }}</p>
 
-        <img src="{{ $project->image }}" alt="" class="img-fluid">
+        <img src="{{ $project->image }}" alt="" class="img-fluid" style="width: 200px">
 
         <a href="{{ $project->github_link }}">GitHub Link</a>
 

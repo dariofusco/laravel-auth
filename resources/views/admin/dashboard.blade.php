@@ -22,5 +22,6 @@
             </div>
         </div>
     </div>
+    <a href="{{ route('admin.projects.index') }}">I Miei Progetti</a>
 </div>
 @endsection
