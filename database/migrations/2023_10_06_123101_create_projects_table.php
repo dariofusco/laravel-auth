@@ -16,9 +16,9 @@ return new class extends Migration
 
             $table->string('name');
             $table->string('type');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->date('date');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('github_link');
 
             $table->timestamps();
