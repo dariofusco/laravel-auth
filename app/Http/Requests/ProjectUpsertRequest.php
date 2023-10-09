@@ -37,4 +37,14 @@ class ProjectUpsertRequest extends FormRequest
             'github_link' => 'required'
         ];
     }
+
+    public function messages(): array {
+        return [
+            'name.required' => 'Il nome è richiesto',
+            'type.required' => 'La tipologia è richiesta',
+            'date.required' => 'La data è richiesta',
+            'github_link' => 'Il link è richiesto'
+        ];
+    }
+
 }
