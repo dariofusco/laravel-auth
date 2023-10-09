@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProjectUpsertRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -29,16 +30,9 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProjectUpsertRequest $request)
     {
-        $data = $request->validate([
-            'name' => 'required',
-            'type' => 'required',
-            'description' => 'nullable',
-            'date' => 'required',
-            'image' => 'nullable',
-            'github_link' => 'required'
-        ]);
+        $data = $request->validated();
 
         $project = Project::create($data);
 
@@ -68,19 +62,12 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, int $id)
+    public function update(ProjectUpsertRequest $request, int $id)
     {
         $project = Project::findOrFail($id);
 
-        $data = $request->validate([
-            'name' => 'required',
-            'type' => 'required',
-            'description' => 'nullable',
-            'date' => 'required',
-            'image' => 'nullable',
-            'github_link' => 'required'
-        ]);
-        
+        $data = $request->validated();
+
         $project->update($data);
         
         return redirect()->route('admin.projects.show', $project->id);
