@@ -9,13 +9,28 @@
 
         <p>{{ $project->description }}</p>
 
-        <p>{{ $project->date }}</p>
+        <p>{{ $project->date->format('d/m/Y') }}</p>
 
-        <img src="{{ $project->image }}" alt="" class="img-fluid" style="width: 200px">
+        <div>
+            <img src="{{ $project->image }}" alt="" class="img-fluid" style="width: 200px">
+        </div>
 
         <a href="{{ $project->github_link }}">GitHub Link</a>
 
-        <a href="{{ route('admin.projects.index') }}">Indietro</a>
+        <div class="d-flex py-3">
+
+            <a class="btn btn-warning" href="{{ route('admin.projects.edit', ['project' => $project->id]) }}">Modifica</a>
+
+            <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger mx-3">Elimina</button>
+            </form>
+
+        </div>
+
+        <a class="btn btn-primary" href="{{ route('admin.projects.index') }}">Indietro</a>
 
     </div>
+    
 @endsection

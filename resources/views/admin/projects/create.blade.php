@@ -56,11 +56,11 @@
                 @enderror
             </div>
 
+            <a class="btn btn-primary" href="{{ route('admin.projects.index') }}">Indietro</a>
+
             <button class="btn btn-primary">Crea</button>
 
         </form>
-
-        <a href="{{ route('admin.projects.index') }}">Indietro</a>
 
     </div>
 @endsection
