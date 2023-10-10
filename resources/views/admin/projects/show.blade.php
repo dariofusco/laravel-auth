@@ -12,7 +12,7 @@
         <p>{{ $project->date->format('d/m/Y') }}</p>
 
         <div>
-            <img src="{{ $project->image }}" alt="" class="img-fluid" style="width: 200px">
+            <img src="{{ asset('/storage/' . $project->image) }}" alt="" class="img-fluid" style="width: 200px">
         </div>
 
         <a href="{{ $project->github_link }}">GitHub Link</a>

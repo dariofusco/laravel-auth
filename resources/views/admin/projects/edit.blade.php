@@ -5,7 +5,8 @@
 
         <h1>Modifica Progetto</h1>
 
-        <form action="{{ route('admin.projects.update', ['project' => $project->id]) }}" method="POST">
+        <form action="{{ route('admin.projects.update', ['project' => $project->id]) }}" method="POST"
+            enctype="multipart/form-data">
             @csrf()
             @method('PUT')
 
@@ -46,8 +47,11 @@
 
             <div class="mb-3">
                 <label class="form-label">Immagine</label>
-                <input type="text" class="form-control @error('image') is-invalid @enderror" name="image"
-                    value="{{ $project->image }}">
+                @if ($project->image)
+                    <img src="{{ asset('/storage/' . $project->image) }}" alt=""
+                        class="img-fluid border border-danger my-2" style="width: 100px">
+                @endif
+                <input type="file" class="form-control @error('image') is-invalid @enderror" name="image">
                 @error('image')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

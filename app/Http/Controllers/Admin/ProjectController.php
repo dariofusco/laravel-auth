@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectUpsertRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -33,7 +34,9 @@ class ProjectController extends Controller
     public function store(ProjectUpsertRequest $request)
     {
         $data = $request->validated();
-
+        
+        $data['image'] = Storage::put('projects', $data['image']);
+        
         $project = Project::create($data);
 
         return redirect()->route('admin.projects.show', $project->id);
@@ -68,6 +71,14 @@ class ProjectController extends Controller
 
         $data = $request->validated();
 
+        if($project->image) {
+            Storage::delete($project->image);
+        }
+
+        $img_path = Storage::put('projects', $data['image']);
+
+        $data['image'] = $img_path;
+
         $project->update($data);
         
         return redirect()->route('admin.projects.show', $project->id);
@@ -79,6 +90,10 @@ class ProjectController extends Controller
     public function destroy(string $id)
     {
         $project = Project::findOrFail($id);
+
+        if($project->image) {
+            Storage::delete($project->image);
+        }
 
         $project->delete();
 
